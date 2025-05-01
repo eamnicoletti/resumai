@@ -47,13 +47,14 @@ export default function HeroSection() {
               aria-hidden="true"
             ></span>
           </span>{' '}
-          em segundos
+          em segundos sem complicação
         </h1>
         <h2
           className="text-lg sm:text-xl lg:text-2xl text-center px-4 
         lg:px-0 lg:max-w-4xl"
         >
-          Transforme documentos em resumos consistentes.
+          Transforme documentos extensos em insights claros e resumos
+          consistentes.
         </h2>
         <div className="flex justify-center mt-6">
           <Button
@@ -65,7 +66,7 @@ export default function HeroSection() {
           font-bold shadow-lg transition-all duration-300"
           >
             <Link href={'/#pricing'} className="flex gap-2 items-center">
-              <span>Resuma agora</span>
+              <span>Comece agora</span>
               <ArrowRight className='"animate-pulse' />
             </Link>
           </Button>
