@@ -34,8 +34,8 @@ lg:px-8 px-2 mx-auto"
       <div className="flex lg:justify-end lg:flex-1">
         <SignedIn>
           <div className="flex gap-2 items-center">
-            <NavLink href="/#upload" className="text-lg">
-              Upload seu PDF
+            <NavLink href="/upload" className="text-lg">
+              Upload de PDF
             </NavLink>
             <div className="text-lg">Pro</div>
             <SignedIn>
