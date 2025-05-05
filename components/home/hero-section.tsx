@@ -38,23 +38,23 @@ export default function HeroSection() {
           </div>
         </div>
         <h1 className="font-bold py-6 text-center">
-          Seus PDFs{' '}
+          Transforme seus PDFs em{' '}
           <span className="relative inline-block">
-            <span className="relative z-10 px-2">resumidos</span>
+            <span className="relative z-10 px-2">insights</span>
             <span
               className="absolute inset-0 bg-rose-200/50 -rotate-2 
           rounded-lg  transform -skew-y-1"
               aria-hidden="true"
             ></span>
           </span>{' '}
-          em segundos sem complicação
+          claros e valiosos
         </h1>
         <h2
           className="text-lg sm:text-xl lg:text-2xl text-center px-4 
         lg:px-0 lg:max-w-4xl"
         >
-          Transforme documentos extensos em insights claros e resumos
-          consistentes.
+          Resuma documentos extensos em segundos, sem complicação,
+          <br />e obtenha resumos práticos e objetivos, fáceis de entender.
         </h2>
         <div className="flex justify-center mt-6">
           <Button
