@@ -13,14 +13,15 @@ export const generateSummaryFromGemini = async (pdfText: string) => {
           {
             text: `\n\nTransform this document into an engaging, easy-to-read 
               summary with contextually relevant emojis and proper markdown 
-              formatting:\n\n${pdfText}`,
+              formatting and summarize the document in the same language as the 
+              input text:\n\n${pdfText}`,
           },
         ],
       },
     ]
 
     const response = await genAI.models.generateContent({
-      model: 'gemini-1.5-pro-002',
+      model: 'gemini-1.5-flash-8b',
       contents: prompt,
       config: {
         temperature: 0.7,

@@ -17,11 +17,12 @@ export async function generateSummaryFromOpenAI(pdfText: string) {
           role: 'user',
           content: `Transform this document into an eganging, easy-to-read 
           summary with contextually relevant emojis and proper markdown 
-          formatting:\n\n${pdfText}`,
+          formatting and summarize the document in the same language as the 
+          input text:\n\n${pdfText}`,
         },
       ],
       temperature: 0.7,
-      max_tokens: 1000,
+      max_tokens: 1500,
     })
 
     return completion.choices[0].message.content

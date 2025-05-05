@@ -19,7 +19,7 @@ export default function UploadHeader() {
             [&>svg]:!size-5.5"
         >
           <Sparkles className="h-6 w-6 mr-2 text-rose-600 animate-pulse" />
-          <p className="text-base">Criação de conteúdo Powered by IA</p>
+          <p className="text-base">Criação de conteúdo com Tecnologia de IA</p>
         </Badge>
       </div>
       <div

@@ -1,7 +1,11 @@
 'use client'
 
-import { generatePDFSummary } from '@/actions/upload-actions'
+import {
+  generatePDFSummary,
+  storePdfSummaryAction,
+} from '@/actions/upload-actions'
 import { useUploadThing } from '@/utils/uploadthing'
+import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -10,6 +14,7 @@ import UploadFormInput from './upload-form-input'
 export default function UploadForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const { startUpload, routeConfig } = useUploadThing('pdfUploader', {
     onClientUploadComplete: (response) => {
@@ -62,7 +67,7 @@ export default function UploadForm() {
         return
       }
 
-      toast('📄 Uploading PDF...', {
+      toast('✈️ Uploading PDF...', {
         description: 'Estamos fazendo upload do seu PDF!',
       })
 
@@ -88,14 +93,27 @@ export default function UploadForm() {
       const { data = null, message = null } = result || {}
 
       if (data) {
-        toast('📄 Salvando PDF...', {
+        let storeResult: any
+        toast('💾 Salvando PDF...', {
           description: 'Mais um momento! Estamos salvando seu resumo! ⬇️',
         })
 
-        formRef.current?.reset()
-
         if (data.summary) {
           // save the summary to the database
+          storeResult = await storePdfSummaryAction({
+            fileUrl: resp[0].serverData.file.url,
+            summary: data.summary,
+            title: data.title,
+            fileName: file.name,
+          })
+
+          toast.success('😃 Resumo gerado!', {
+            description: 'Seu resumo foi gerado e salvo com sucesso! 💾',
+          })
+
+          formRef.current?.reset()
+
+          router.push(`/summaries/${storeResult.id}`)
         }
       }
 
@@ -106,6 +124,8 @@ export default function UploadForm() {
       setIsLoading(false)
       console.error('An error occurred during file upload:', error)
       formRef.current?.reset()
+    } finally {
+      setIsLoading(false)
     }
   }
 
