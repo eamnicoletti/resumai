@@ -14,18 +14,18 @@ lg:px-8 px-2 mx-auto"
             className="w-5 h-5 lg:w-8 lg:h-8 text-gray-900 
         hover:rotate-12 transition duration-200 ease-in-out"
           />
-          <span className="font-extrabold lg:text-xl text-gray-900">
+          <span className="font-extrabold md:text-lg lg:text-xl text-gray-900">
             Resumai
           </span>
         </NavLink>
       </div>
 
       <div className="flex lg:justify-center gap-4 lg:gap-12 lg:items-center">
-        <NavLink href="/#pricing" className="text-lg">
+        <NavLink href="/#pricing" className="md:text-lg">
           Planos
         </NavLink>
         <SignedIn>
-          <NavLink href="/dashboard" className="text-lg">
+          <NavLink href="/dashboard" className="md:text-lg">
             Seus Resumos
           </NavLink>
         </SignedIn>
@@ -34,10 +34,10 @@ lg:px-8 px-2 mx-auto"
       <div className="flex lg:justify-end lg:flex-1">
         <SignedIn>
           <div className="flex gap-2 items-center">
-            <NavLink href="/upload" className="text-lg">
+            <NavLink href="/upload" className="md:text-lg">
               Upload de PDF
             </NavLink>
-            <div className="text-lg">Pro</div>
+            <div className="md:text-lg">Pro</div>
             <SignedIn>
               <UserButton />
             </SignedIn>
@@ -45,7 +45,7 @@ lg:px-8 px-2 mx-auto"
         </SignedIn>
 
         <SignedOut>
-          <NavLink href="/sign-in" className="text-lg">
+          <NavLink href="/sign-in" className="md:text-lg">
             Login
           </NavLink>
         </SignedOut>

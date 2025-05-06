@@ -1,5 +1,4 @@
 import Header from '@/components/common/header'
-import FooterSection from '@/components/ui/footer'
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import { Source_Sans_3 as FontSans } from 'next/font/google'
@@ -29,7 +28,6 @@ export default function RootLayout({
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
-            <FooterSection />
           </div>
           <Toaster position="top-right" richColors />
         </body>

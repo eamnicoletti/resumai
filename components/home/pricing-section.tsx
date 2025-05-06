@@ -108,9 +108,7 @@ export default function PricingSection() {
         lg:px-8 lg:pt-12"
       >
         <div className="flex items-center justify-center w-full pb-12">
-          <h2 className="uppercase font-bold text-xl mb-8 text-rose-500">
-            Planos
-          </h2>
+          <h2 className="uppercase font-bold text-xl text-rose-500">Planos</h2>
         </div>
         <div
           className="relative flex justify-center flex-col

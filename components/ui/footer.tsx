@@ -33,7 +33,7 @@ export default function FooterSection() {
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex lg:flex-1 justify-center space-y-4 text-center">
           <Link href="/" className="flex items-center gap-1 lg:gap-2 shrink-0">
-            <span className="font-extrabold lg:text-5xl text-gray-900">
+            <span className="font-extrabold text-6xl text-gray-900">
               Resum
               <span className="text-rose-500">ai</span>
             </span>
@@ -60,7 +60,7 @@ export default function FooterSection() {
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
-              className="size-7"
+              className="size-8"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"
@@ -80,7 +80,7 @@ export default function FooterSection() {
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
-              className="size-7"
+              className="size-8"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"
@@ -100,7 +100,7 @@ export default function FooterSection() {
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
-              className="size-7"
+              className="size-8"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"
@@ -120,7 +120,7 @@ export default function FooterSection() {
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
-              className="size-7"
+              className="size-8"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"
@@ -145,7 +145,7 @@ export default function FooterSection() {
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
-              className="size-7"
+              className="size-8"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"
@@ -165,7 +165,7 @@ export default function FooterSection() {
             className="text-muted-foreground hover:text-primary block"
           >
             <svg
-              className="size-7"
+              className="size-8"
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"

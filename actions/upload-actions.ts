@@ -8,7 +8,7 @@ import { formatFileNameAsTitle } from '@/utils/format-utils'
 import { auth } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
 
-interface PdfSummaryType {
+interface pdfSummaryType {
   userId?: string
   fileUrl: string
   summary: string
@@ -111,12 +111,17 @@ async function savePdfSummary({
   summary,
   title,
   fileName,
-}: PdfSummaryType) {
-  // sql inserting pdf summary
+}: {
+  userId: string
+  fileUrl: string
+  summary: string
+  title: string
+  fileName: string
+}): Promise<number> {
   try {
     const sql = await getDbConnection()
     const result = await sql`
-      INSERT INTO pdf_summaries (
+      INSERT INTO pdf_summaries(
         user_id,
         original_file_url,
         summary_text,
@@ -128,11 +133,12 @@ async function savePdfSummary({
         ${summary},
         ${title},
         ${fileName}
-      ) RETURNING id;`
+      ) RETURNING id;
+    `
 
     return result[0].id
   } catch (error) {
-    console.error('Error saving PDF summary', error)
+    console.error('Error saving pdf summary', error)
     throw error
   }
 }
@@ -142,13 +148,12 @@ export async function storePdfSummaryAction({
   summary,
   title,
   fileName,
-}: PdfSummaryType) {
-  // user is logged in and has a userId
-  // savePdfSummary
-  // savePdfSummary()
-
-  let savedSummary: any
+}: pdfSummaryType): Promise<
+  | { success: true; message: string; id: number }
+  | { success: false; message: string }
+> {
   try {
+    // user is logged in and has a userId
     const { userId } = await auth()
     if (!userId) {
       return {
@@ -157,7 +162,8 @@ export async function storePdfSummaryAction({
       }
     }
 
-    savedSummary = await savePdfSummary({
+    // savePdfSummary
+    const id = await savePdfSummary({
       userId,
       fileUrl,
       summary,
@@ -165,11 +171,13 @@ export async function storePdfSummaryAction({
       fileName,
     })
 
-    if (!savedSummary) {
-      return {
-        success: false,
-        message: 'Falha ao salvar o resumo! Por favor, tente novamente...',
-      }
+    // Revalidate our cache
+    revalidatePath(`/summaries/${id}`)
+
+    return {
+      success: true,
+      message: 'Pdf summary saved successfully',
+      id,
     }
   } catch (error) {
     return {
@@ -177,16 +185,5 @@ export async function storePdfSummaryAction({
       message:
         error instanceof Error ? error.message : 'Falha ao salvar o resumo',
     }
-  }
-
-  // Revalidate our cache
-  revalidatePath(`/summaries/${savedSummary.id}`)
-
-  return {
-    success: true,
-    message: 'Resumo salvo com sucesso!',
-    data: {
-      id: savedSummary.id,
-    },
   }
 }

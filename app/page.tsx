@@ -4,6 +4,7 @@ import DemoSection from '@/components/home/demo-section'
 import HeroSection from '@/components/home/hero-section'
 import HowItWorksSection from '@/components/home/how-it-works-section'
 import PricingSection from '@/components/home/pricing-section'
+import FooterSection from '@/components/ui/footer'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <HowItWorksSection />
         <PricingSection />
         <CTASection />
+        <FooterSection />
       </div>
     </div>
   )

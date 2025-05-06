@@ -18,8 +18,9 @@ export default function CTASection() {
               className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed
             lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400"
             >
-              Transforme documentos extensos em insights claros e acionáveis
-              ​​com nosso resumidor com tecnologia de IA.
+              Transforme documentos extensos em insights claros e valiosos em
+              poucos segundos ​​com nosso resumidor impulsionado com tecnologia
+              de IA.
             </p>
           </div>
           <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
@@ -30,13 +31,14 @@ export default function CTASection() {
                 className="w-full min-[400px]:w-auto bg-linear-to-r
                 from-slate-900 to-rose-500 hover:from-rose-500
                 hover:to-slate-900 hover:text-white text-white
-                transition-all duration-300 "
+                transition-all duration-300 group hover:no-underline 
+                hover:font-bold"
               >
                 <Link
                   href="/#pricing"
-                  className="flex items-center justify-center px-6 py-6"
+                  className="flex items-center justify-center text-lg px-6 py-6"
                 >
-                  Comece Agora{' '}
+                  Comece Aqui{' '}
                   <ArrowRight className="ml-2 h-4 w-4 animate-pulse" />
                 </Link>
               </Button>
