@@ -92,7 +92,7 @@ const PrincingCard = ({
                 : 'border-rose-100 from-rose-400 to-rose-500'
             )}
           >
-            Compre Agora <ArrowRight size={18} />
+            Selecionar Plano <ArrowRight size={18} />
           </Link>
         </div>
       </div>
