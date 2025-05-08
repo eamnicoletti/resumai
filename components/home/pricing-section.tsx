@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { pricingPlans } from '@/utils/constants'
 import { ArrowRight, CheckIcon } from 'lucide-react'
 import Link from 'next/link'
 
@@ -11,36 +12,6 @@ type PriceType = {
   priceId: string
   items: string[]
 }
-
-const plans = [
-  {
-    id: 'basic',
-    name: 'Básico',
-    price: 9,
-    description: 'Perfeito para uso ocasional',
-    paymentLink: '',
-    priceId: '',
-    items: [
-      '5 resumos por mês',
-      'Velocidade de processamento regular',
-      'Email support',
-    ],
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    price: 19,
-    description: 'Para profissionais e times',
-    paymentLink: '',
-    priceId: '',
-    items: [
-      'Resumos ilimitados',
-      'Processamento prioritário',
-      'Suporte 24/7',
-      'Exportação de Markdown',
-    ],
-  },
-]
 
 const PrincingCard = ({
   name,
@@ -114,7 +85,7 @@ export default function PricingSection() {
           className="relative flex justify-center flex-col
         lg:flex-row items-center lg:items-strech gap-8"
         >
-          {plans.map((plan) => (
+          {pricingPlans.map((plan) => (
             <PrincingCard key={plan.id} {...plan} />
           ))}
         </div>

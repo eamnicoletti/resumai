@@ -58,24 +58,24 @@ export async function generatePDFSummary(
 
     let summary
     try {
-      summary = await generateSummaryFromOpenAI(pdfText)
+      summary = await generateSummaryFromGemini(pdfText)
       console.log({ summary })
     } catch (error) {
       console.error('Error generating summary:', error)
-      // call Gemini
-      if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
-        try {
-          summary = await generateSummaryFromGemini(pdfText)
-        } catch (geminiError) {
-          console.error(
-            'Gemini API failed after OpenAI quote exceeded',
-            geminiError
-          )
-          throw new Error(
-            'Erro ao gerar resumo com os provedores de IA disponíveis'
-          )
-        }
+      // call OpenAI
+      // if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
+      try {
+        summary = await generateSummaryFromOpenAI(pdfText)
+      } catch (openAIError) {
+        console.error(
+          'OpenAI API failed after Gemini quote exceeded',
+          openAIError
+        )
+        throw new Error(
+          'Erro ao gerar resumo com os provedores de IA disponíveis'
+        )
       }
+      // }
     }
 
     if (!summary) {

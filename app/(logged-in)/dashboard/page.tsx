@@ -3,6 +3,7 @@ import EmptySummaryState from '@/components/summaries/empty-summary-state'
 import SummaryCard from '@/components/summaries/summary-card'
 import { Button } from '@/components/ui/button'
 import { getSummaries } from '@/lib/summaries'
+import { hasReachedUpUploadLimit } from '@/lib/user'
 import { currentUser } from '@clerk/nextjs/server'
 import { ArrowRight, Plus } from 'lucide-react'
 import Link from 'next/link'
@@ -14,7 +15,7 @@ export default async function Dashboard() {
 
   if (!userId) return redirect('/sign-in')
 
-  const uploadLimit = 5
+  const { hasReachedLimit, uploadLimit } = await hasReachedUpUploadLimit(userId)
   const summaries = await getSummaries(userId)
 
   return (
@@ -28,44 +29,48 @@ export default async function Dashboard() {
                 className="text-4xl font-bold tracking-tight bg-linear-to-r
               from-gray-600 to-gray-900 bg-clip-text text-transparent"
               >
-                Seus Resumos
+                Meus Resumos
               </h1>
               <p className="text-gray-600">
                 Transforme seus PDFs em resumos práticos e objetivos
               </p>
             </div>
-
-            <Button
-              className="bg-linear-to-r from-rose-500 to-rose-700 
+            {!hasReachedLimit && (
+              <Button
+                className="bg-linear-to-r from-rose-500 to-rose-700 
             hover:from-rose-600 hover:to-rose-800 hover:scale-105
             transition-all duration-300 group hover:no-underline"
-            >
-              <Link href="/upload" className="flex items-center text-white">
-                <Plus className="w-5 h-5 mr-2" />
-                Novo Resumo
-              </Link>
-            </Button>
+              >
+                <Link href="/upload" className="flex items-center text-white">
+                  <Plus className="w-5 h-5 mr-2" />
+                  Novo Resumo
+                </Link>
+              </Button>
+            )}
           </div>
-          <div className="mb-6">
-            <div
-              className="bg-rose-50 border border-rose-200 rounded-lg 
+          {hasReachedLimit && (
+            <div className="mb-6">
+              <div
+                className="bg-rose-50 border border-rose-200 rounded-2xl 
             p-4 text-rose-800"
-            >
-              <p className="text-sm">
-                Você atingiu o limite de {uploadLimit} uploads do plano Básico.{' '}
-                <Link
-                  href="/#pricing"
-                  className="text-rose-800 underline font-medium 
+              >
+                <p className="text-sm">
+                  Você atingiu o limite de {uploadLimit} uploads do plano
+                  Básico.{' '}
+                  <Link
+                    href="/#pricing"
+                    className="text-rose-800 underline font-medium 
                 underline-offset-4 inline-flex items-center"
-                >
-                  {' '}
-                  Clique aqui e atualize para o Pro{' '}
-                  <ArrowRight className="w-4 h-4 ml-1 inline-block" />
-                </Link>{' '}
-                para uploads ilimitados.
-              </p>
+                  >
+                    {' '}
+                    Clique aqui e atualize para o Pro{' '}
+                    <ArrowRight className="w-4 h-4 ml-1 inline-block" />
+                  </Link>{' '}
+                  para uploads ilimitados.
+                </p>
+              </div>
             </div>
-          </div>
+          )}
           {summaries.length === 0 ? (
             <EmptySummaryState />
           ) : (

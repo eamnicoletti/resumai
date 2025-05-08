@@ -35,7 +35,12 @@ export const generateSummaryFromGemini = async (pdfText: string) => {
 
     return response.text
   } catch (error: any) {
-    console.error('gemini API Error:', error)
+    console.error('Gemini API: Error generating summary:', error)
+
+    if (error?.status === 429) {
+      throw new Error('RATE_LIMIT_EXCEEDED')
+    }
+
     throw error
   }
 }

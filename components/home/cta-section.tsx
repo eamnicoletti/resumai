@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 
 export default function CTASection() {
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 py-10">
       <div className="py-12 lg:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="flex flex-col items-center justify-center space-y-4 
@@ -27,16 +27,16 @@ export default function CTASection() {
             <div>
               <Button
                 variant={'link'}
-                size="lg"
-                className="w-full min-[400px]:w-auto bg-linear-to-r
+                size="xl"
+                className="w-full min-[400px]:w-auto mt-3 bg-linear-to-r
                 from-slate-900 to-rose-500 hover:from-rose-500
                 hover:to-slate-900 hover:text-white text-white
                 transition-all duration-300 group hover:no-underline 
-                hover:font-bold"
+                hover:font-bold rounded-full"
               >
                 <Link
                   href="/#pricing"
-                  className="flex items-center justify-center text-lg px-6 py-6"
+                  className="flex items-center justify-center text-lg px-8 py-4"
                 >
                   Comece Aqui{' '}
                   <ArrowRight className="ml-2 h-4 w-4 animate-pulse" />

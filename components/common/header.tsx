@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { FileText } from 'lucide-react'
 import NavLink from './nav-link'
+import PlanBadge from './plan-badge'
 
 export default function Header() {
   return (
@@ -27,7 +28,7 @@ lg:px-8 px-2 mx-auto"
         </NavLink>
         <SignedIn>
           <NavLink href="/dashboard" className="md:text-lg">
-            Seus Resumos
+            Meus Resumos
           </NavLink>
         </SignedIn>
       </div>
@@ -38,7 +39,7 @@ lg:px-8 px-2 mx-auto"
             <NavLink href="/upload" className="md:text-lg">
               Upload de PDF
             </NavLink>
-            <div className="md:text-lg">Pro</div>
+            <PlanBadge />
             <SignedIn>
               <UserButton />
             </SignedIn>

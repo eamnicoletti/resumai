@@ -27,10 +27,12 @@ export async function generateSummaryFromOpenAI(pdfText: string) {
 
     return completion.choices[0].message.content
   } catch (error: any) {
+    console.error('OpenAI API: Error generating summary:', error)
+
     if (error?.status === 429) {
-      console.error('Error generating summary:', error)
       throw new Error('RATE_LIMIT_EXCEEDED')
     }
+
     throw error
   }
 }

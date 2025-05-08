@@ -43,7 +43,7 @@ export default function HeroSection() {
             <span className="relative z-10 px-2">insights</span>
             <span
               className="absolute inset-0 bg-rose-200/50 -rotate-2 
-          rounded-lg  transform -skew-y-1"
+          rounded-2xl  transform -skew-y-1"
               aria-hidden="true"
             ></span>
           </span>{' '}

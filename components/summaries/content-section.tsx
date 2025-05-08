@@ -60,9 +60,9 @@ export default function ContentSection({
         }
 
         if (hasEmoji || isMainPoint) {
-          return <EmojiPoint point={point} index={index} />
+          return <EmojiPoint key={index} point={point} index={index} />
         }
-        return <RegularPoint point={point} index={index} />
+        return <RegularPoint key={index} point={point} index={index} />
       })}
     </div>
   )
