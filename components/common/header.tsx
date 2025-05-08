@@ -11,11 +11,12 @@ lg:px-8 px-2 mx-auto"
       <div className="flex lg:flex-1">
         <NavLink href="/" className="flex items-center gap-1 lg:gap-2 shrink-0">
           <FileText
-            className="w-5 h-5 lg:w-8 lg:h-8 text-gray-900 
+            className="w-5 h-5 lg:w-6 lg:h-6 text-gray-900 
         hover:rotate-12 transition duration-200 ease-in-out"
           />
-          <span className="font-extrabold md:text-lg lg:text-xl text-gray-900">
-            Resumai
+          <span className="font-extrabold md:text-xl lg:text-2xl text-slate-900">
+            Resum
+            <span className="text-rose-500">ai</span>
           </span>
         </NavLink>
       </div>

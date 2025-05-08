@@ -1,4 +1,51 @@
 import { Pizza } from 'lucide-react'
+import { SummaryViewer } from '../summaries/summary-viewer'
+
+const DEMO_SUMMARY = {
+  title: 'Next.js Course',
+  summary: `
+
+# 🚀 Melhore suas habilidades em Next.js!
+🎯 Domine o Next.js e crie aplicativos web incríveis com este curso abrangente.
+• 📌 Perfeito para desenvolvedores de todos os níveis.
+
+
+# Detalhes do Documento
+• 📄 Tipo: Curso Online
+• 👥 Para: Desenvolvedores Web, Entusiastas de JavaScript, Iniciantes e Especialistas em Next.js
+
+
+# Destaques Principais
+• 🚀 Aprenda Server-Side Rendering (SSR) e Static Site Generation (SSG)
+• ⭐ Mergulhe fundo nos recursos do Next.js, como rotas de API e otimização de imagens
+• 💫 Crie projetos do mundo real e aumente seu portfólio
+
+
+# Por que Isso Importa
+💡 Next.js é uma estrutura poderosa que simplifica o desenvolvimento web e melhora o desempenho, tornando você um dos profissionais mais procurados do mercado
+
+
+# Pontos Principais
+• 🎯 Obtenha uma sólida compreensão dos principais conceitos do Next.js
+• 💪 Crie um aplicativo web rápido, mais eficiente e otimizado para SEO
+• 🔥 Melhore seu marketing como desenvolvedor Front-End ou Full-Stack
+
+
+# Dicas Adicionais
+• ⭐ Pratique com construção de projetos para solidificar seu aprendizado
+• 💎 Explore a documentação do Next.js para recursos avançados
+• 🌟 Junte-se à comunidade Next.js para obter suporte e networking
+
+
+# Termos-Chave
+• 📚 SSR (Server-Side Rendering): Renderização de páginas no servidor para melhorar SEO e performance
+• 🔍 SSG (Static Site Generation): Gerando arquivos HTML estáticos em tempo de execução para carregamento extremamente rápido
+
+
+# Resumo Final
+💫 Invista no seu futuro e torne-se um profissional em Next.js!
+  `,
+}
 
 export default function DemoSection() {
   return (
@@ -45,7 +92,7 @@ export default function DemoSection() {
           </div>
 
           <div className="flex justify-center items-center px-2 sm:px-4 lg:px-6">
-            {/* Summary Viewe */}
+            <SummaryViewer summary={DEMO_SUMMARY.summary} />
           </div>
         </div>
       </div>
