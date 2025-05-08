@@ -1,5 +1,6 @@
 'use client'
 
+import { MotionDiv } from '@/components/common/motion-warpper'
 import { Card } from '@/components/ui/card'
 import { parseSection } from '@/utils/summary-helper'
 import { useState } from 'react'
@@ -30,7 +31,7 @@ export function SummaryViewer({ summary }: { summary: string }) {
     setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1))
 
   const handlePrevious = () =>
-    setCurrentSection((prev) => Math.min(prev - 1, 0))
+    setCurrentSection((prev) => Math.max(prev - 1, 0))
 
   // const handleSectionSelect = (index: number) =>
   //     setCurrentSection(Math.min(Math.max(index, 0), sections.length - 1));
@@ -48,12 +49,17 @@ export function SummaryViewer({ summary }: { summary: string }) {
   return (
     <Card
       className="relative px-2 md:min-w-[500px] h-[500px] sm:h-[600px] lg:h-[700px]
-        w-full xl:w-[600px] overflow-hidden bg-linear-to-br from-background
+        w-full xl:w-[700px] overflow-hidden bg-linear-to-br from-background
         via-background/95 to-rose-500/5 backdrop-blur-lg shadow-2xl rounded-3xl
         border border-rose-500/10"
     >
       <ProgressBar sections={sections} currentSection={currentSection} />
-      <div
+      <MotionDiv
+        key={currentSection}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.2, ease: 'easeInOut' }}
+        exit={{ opacity: 0 }}
         className="h-full overflow-y-auto scrollbar-hide
             pt-12 sm:pt-16 pb-20 sm:pb-24"
       >
@@ -70,7 +76,7 @@ export function SummaryViewer({ summary }: { summary: string }) {
                         ))}
                     </ul> */}
         </div>
-      </div>
+      </MotionDiv>
 
       <NavigationControls
         currentSection={currentSection}

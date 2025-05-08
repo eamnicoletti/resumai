@@ -1,5 +1,6 @@
 import { BrainCircuit, FileOutput, FileText, MoveRight } from 'lucide-react'
 import { ReactNode } from 'react'
+import { MotionDiv, MotionH2, MotionH3 } from '../common/motion-warpper'
 
 type Step = {
   icon: ReactNode
@@ -51,12 +52,22 @@ export default function HowItWorksSection() {
         </div>
 
         <div className="text-center mb-16">
-          <h2 className="font-bold text-xl uppercase mb-4 text-rose-500">
+          <MotionH2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="font-bold text-xl uppercase mb-4 text-rose-500"
+          >
             Como funciona
-          </h2>
-          <h3 className="font-bold text-3xl max-w-2xl mx-auto">
+          </MotionH2>
+          <MotionH3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-bold text-3xl max-w-2xl mx-auto"
+          >
             Transforme qualquer PDF em um resumo simplificado em apenas 3 passos
-          </h3>
+          </MotionH3>
         </div>
 
         <div
@@ -64,10 +75,19 @@ export default function HowItWorksSection() {
         relative"
         >
           {steps.map((step, idx) => (
-            <div className="relative flex items-stretch" key={idx}>
+            <MotionDiv
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.2 }}
+              className="relative flex items-stretch"
+              key={idx}
+            >
               <StepItem {...step} />
               {idx < steps.length - 1 && (
-                <div
+                <MotionDiv
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: idx * 0.2 + 0.3 }}
                   className="hidden md:block absolute top-1/2 -right-4 
                 transform -translate-y-1/2 z-10"
                 >
@@ -76,9 +96,9 @@ export default function HowItWorksSection() {
                     strokeWidth={1}
                     className="text-rose-400"
                   />
-                </div>
+                </MotionDiv>
               )}
-            </div>
+            </MotionDiv>
           ))}
         </div>
       </div>
@@ -90,7 +110,7 @@ function StepItem({ icon, label, description }: Step) {
   return (
     <div
       className="relative p-6 rounded-2xl bg-white/5 
-    backdrop-blur-xs border border-white/10 hover:border-rose-500/5 
+    backdrop-blur-xs border border-white/10 hover:border-rose-500/10 
     transition-colors group w-full"
     >
       <div className="flex flex-col gap-4 h-full">

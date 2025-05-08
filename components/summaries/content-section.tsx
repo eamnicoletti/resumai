@@ -1,10 +1,13 @@
+import { containerVariants, itemVariants } from '@/utils/constants'
 import { parseEmojiPoint, parsePoint } from '@/utils/summary-helper'
+import { MotionDiv } from '../common/motion-warpper'
 
 const EmojiPoint = ({ point, index }: { point: string; index: number }) => {
   const { emoji, text } = parseEmojiPoint(point) ?? {}
 
   return (
-    <div
+    <MotionDiv
+      variants={itemVariants}
       key={`point-${index}`}
       className="group relative bg-linear-to-br from-gray-200/[0.08] 
       to-gray-400/[0.03] p-4 rounded-2xl border border-gray-500/10 
@@ -20,13 +23,14 @@ const EmojiPoint = ({ point, index }: { point: string; index: number }) => {
           {text}
         </p>
       </div>
-    </div>
+    </MotionDiv>
   )
 }
 
 const RegularPoint = ({ point, index }: { point: string; index: number }) => {
   return (
-    <div
+    <MotionDiv
+      variants={itemVariants}
       key={`point-${index}`}
       className="group relative bg-linear-to-br from-gray-200/[0.08] 
       to-gray-400/[0.03] p-4 rounded-2xl border border-gray-500/10 
@@ -39,7 +43,7 @@ const RegularPoint = ({ point, index }: { point: string; index: number }) => {
       <p className="relative text-lg lg:text-xl text-muted-foreground/90 leading-relaxed text-left">
         {point}
       </p>
-    </div>
+    </MotionDiv>
   )
 }
 
@@ -51,7 +55,14 @@ export default function ContentSection({
   points: string[]
 }) {
   return (
-    <div>
+    <MotionDiv
+      variants={containerVariants}
+      key={points.join('')}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="space-y-4"
+    >
       {points.map((point, index) => {
         const { isNumbered, isMainPoint, hasEmoji, isEmpty } = parsePoint(point)
 
@@ -64,6 +75,6 @@ export default function ContentSection({
         }
         return <RegularPoint key={index} point={point} index={index} />
       })}
-    </div>
+    </MotionDiv>
   )
 }

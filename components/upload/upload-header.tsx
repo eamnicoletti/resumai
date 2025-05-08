@@ -1,4 +1,6 @@
+import { itemVariants } from '@/utils/constants'
 import { Sparkles } from 'lucide-react'
+import { MotionDiv } from '../common/motion-warpper'
 import { Badge } from '../ui/badge'
 
 export default function UploadHeader() {
@@ -7,7 +9,8 @@ export default function UploadHeader() {
       className="flex flex-col items-center justify-center gap-6 
         text-center "
     >
-      <div
+      <MotionDiv
+        variants={itemVariants}
         className="relative p-[1px] overflow-hidden rounded-full 
           bg-linear-to-r  from-rose-200 via-rose-500 to-rose-800
           animate-gradient-x group"
@@ -21,8 +24,9 @@ export default function UploadHeader() {
           <Sparkles className="h-6 w-6 mr-2 text-rose-600 animate-pulse" />
           <p className="text-base">Criação de conteúdo com Tecnologia de IA</p>
         </Badge>
-      </div>
-      <div
+      </MotionDiv>
+      <MotionDiv
+        variants={itemVariants}
         className="capitalize text-3xl font-bold tracking-tight 
           text-gray-900 sm:text-4xl"
       >
@@ -35,13 +39,14 @@ export default function UploadHeader() {
             aria-hidden="true"
           ></span>
         </span>
-      </div>
-      <div
+      </MotionDiv>
+      <MotionDiv
+        variants={itemVariants}
         className="mt-2 text-lg leading-8 text-gray-600 max-w-2xl
             text-center"
       >
         <p>Faça o upload do seu PDF e deixe nossa IA fazer mágica! ✨</p>
-      </div>
+      </MotionDiv>
     </div>
   )
 }

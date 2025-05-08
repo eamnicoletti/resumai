@@ -1,18 +1,40 @@
+import {
+  MotionDiv,
+  MotionH1,
+  MotionH2,
+  MotionSection,
+  MotionSpan,
+} from '@/components/common/motion-warpper'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { containerVariants, itemVariants } from '@/utils/constants'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
-import { Badge } from '../ui/badge'
-import { Button } from '../ui/button'
+
+const buttonVariants = {
+  scale: 1.05,
+  transition: {
+    type: 'spring',
+    stiffness: 300,
+    damping: 10,
+  },
+}
 
 export default function HeroSection() {
   return (
-    <section
+    <MotionSection
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
       className="relative mx-auto flex flex-col z-0 items-center 
     justify-center py-16 sm:py-20 lg:pb-28 transition-all animate-in lg:px-12 
     max-w-7xl"
     >
       <div className="flex flex-col items-center justify-center w-full">
         <div className="flex justify-center w-full">
-          <div
+          {/* Badge */}
+          <MotionDiv
+            variants={itemVariants}
             className="relative p-[1px] overflow-hidden rounded-full 
           bg-linear-to-r from-rose-200 via-rose-500 to-rose-800
           animate-gradient-x group"
@@ -35,28 +57,45 @@ export default function HeroSection() {
                 Powered by AI
               </p>
             </Badge>
-          </div>
+          </MotionDiv>
         </div>
-        <h1 className="font-bold py-6 text-center">
+
+        {/* Main Heading */}
+        <MotionH1
+          variants={itemVariants}
+          className="font-bold py-6 text-center"
+        >
           Transforme seus PDFs em{' '}
-          <span className="relative inline-block">
+          <MotionSpan
+            whileHover={buttonVariants}
+            className="relative inline-block"
+          >
             <span className="relative z-10 px-2">insights</span>
             <span
               className="absolute inset-0 bg-rose-200/50 -rotate-2 
           rounded-2xl  transform -skew-y-1"
               aria-hidden="true"
             ></span>
-          </span>{' '}
+          </MotionSpan>{' '}
           claros e valiosos
-        </h1>
-        <h2
+        </MotionH1>
+
+        {/* Sub Heading */}
+        <MotionH2
+          variants={itemVariants}
           className="text-lg sm:text-xl lg:text-2xl text-center px-4 
         lg:px-0 lg:max-w-4xl"
         >
           Resuma documentos extensos em segundos, sem complicação,
           <br />e obtenha resumos práticos e objetivos, fáceis de entender.
-        </h2>
-        <div className="flex justify-center mt-6">
+        </MotionH2>
+
+        {/* CTA */}
+        <MotionDiv
+          variants={itemVariants}
+          whileHover={buttonVariants}
+          className="flex justify-center mt-6"
+        >
           <Button
             variant={'link'}
             className="text-white mt-6 text-base 
@@ -70,8 +109,8 @@ export default function HeroSection() {
               <ArrowRight className='"animate-pulse' />
             </Link>
           </Button>
-        </div>
+        </MotionDiv>
       </div>
-    </section>
+    </MotionSection>
   )
 }
