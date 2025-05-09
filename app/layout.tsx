@@ -1,4 +1,5 @@
 import Header from '@/components/common/header'
+import { ORIGIN_URL } from '@/utils/helpers'
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import { Source_Sans_3 as FontSans } from 'next/font/google'
@@ -12,8 +13,20 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: 'Resumai - Resumo em PDF com tecnologia de IA',
-  description: 'Resumai é uma poderosa plataforma de resumir documentos em PDF',
+  title: 'Resumai - Resumo de PDFs com tecnologia de IA',
+  description:
+    'Salve horas de tempo de leitura. Transforme PDFs extensos em resumos claros e estruturados em segundos com nossa tecnologia de IA poderosa.',
+  openGraph: {
+    images: [
+      {
+        url: '/opengraph-image.png',
+      },
+    ],
+  },
+  metadataBase: new URL(ORIGIN_URL),
+  alternates: {
+    canonical: ORIGIN_URL,
+  },
 }
 
 export default function RootLayout({
