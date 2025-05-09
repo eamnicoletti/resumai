@@ -20,7 +20,6 @@ export async function generatePDFSummary(
   uploadResponse: [
     {
       serverData: {
-        userId: string
         file: {
           url: string
           name: string
@@ -39,7 +38,6 @@ export async function generatePDFSummary(
 
   const {
     serverData: {
-      userId,
       file: { url: pdfUrl, name: fileName },
     },
   } = uploadResponse[0]

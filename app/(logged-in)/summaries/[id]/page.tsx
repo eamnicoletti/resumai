@@ -59,20 +59,25 @@ props:   {
               />
             )}
 
-            <MotionDiv 
-          initial={{opacity: 0, y:20}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.5}}className="relative mt-4 sm:mt-8 lg:mt-16 max-w-4xl mx-auto">
-              <div className="relative bg-white/80 backdrop-blur-md 
-              rounded-2xl sm:rounded-3xl shadow-xl border border-rose-100/30 
-              transition-all duration-300 hover:shadow-2xl hover:bg-white/90">
+          <MotionDiv 
+            initial={{opacity: 0, y:20}}
+            animate={{opacity: 1}}
+            transition={{duration: 0.5}}
+            className="relative mt-4 sm:mt-8 lg:mt-16 max-w-4xl mx-auto"
+          >
+            <div className="relative p-4 sm:p-6 lg:p-8 bg-white/80 
+              backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-xl border 
+              border-rose-100/30 transition-all duration-300 hover:shadow-2xl 
+              hover:bg-white/90 max-w-4xl mx-auto"
+            >
+
                 {/* Gradient Background Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br 
                 from-rose-50/50 via-orange-50/30 to-transparent opacity-50 
                 rounded-2xl sm:rounded-3xl pointer-events-none z-0" />
 
                 {/* Word Count Badge */}
-                <div className="absolute top-4 right-4 z-10">
+                <div className="absolute top-6 right-6 z-10">
                   <div className="flex items-center gap-2 text-xs sm:text-sm 
                   text-muted-foreground bg-white/90 px-3 py-1.5 rounded-full 
                   shadow-md">
@@ -82,7 +87,7 @@ props:   {
                 </div>
 
                 {/* Summary Content */}
-                <div className="relative z-10 pt-16 px-6 sm:px-8 lg:px-10 pb-6">
+                <div className="relative z-10 pt-12 px-6 sm:px-8 lg:px-10 pb-6">
                   <SummaryViewer summary={summary_text} />
                 </div>
               </div>

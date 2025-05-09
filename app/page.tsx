@@ -5,10 +5,12 @@ import HeroSection from '@/components/home/hero-section'
 import HowItWorksSection from '@/components/home/how-it-works-section'
 import PricingSection from '@/components/home/pricing-section'
 import FooterSection from '@/components/ui/footer'
+import LoadingSummary from './(logged-in)/summaries/[id]/loading'
 
 export default function Home() {
   return (
     <div className="relative w-full">
+      <LoadingSummary />
       <BgGradient />
       <div className="flex flex-col">
         <HeroSection />

@@ -45,7 +45,7 @@ export default function UploadHeader() {
         className="mt-2 text-lg leading-8 text-gray-600 max-w-2xl
             text-center"
       >
-        <p>Faça o upload do seu PDF e deixe nossa IA fazer mágica! ✨</p>
+        <p>Faça o upload do seu documento e deixe nossa IA fazer mágica! ✨</p>
       </MotionDiv>
     </div>
   )

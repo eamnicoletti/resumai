@@ -110,8 +110,9 @@ function StepItem({ icon, label, description }: Step) {
   return (
     <div
       className="relative p-6 rounded-2xl bg-white/5 
-    backdrop-blur-xs border border-white/10 hover:border-rose-500/10 
-    transition-colors group w-full"
+    backdrop-blur-xs border border-white hover:border-rose-500/10 
+    transition-colors group w-full shadow-lg shadow-rose-500/10 
+    hover:shadow-rose-500/20 max-w-sm"
     >
       <div className="flex flex-col gap-4 h-full">
         <div
