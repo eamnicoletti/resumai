@@ -1,9 +1,11 @@
 'use client'
 
 import {
-  generatePDFSummary,
+  generatePdfSummary,
+  generatePdfText,
   storePdfSummaryAction,
 } from '@/actions/upload-actions'
+import { formatFileNameAsTitle } from '@/utils/format-utils'
 import { useUploadThing } from '@/utils/uploadthing'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
@@ -75,32 +77,40 @@ export default function UploadForm() {
         const errorMessage =
           validatedFields.error.flatten().fieldErrors.file?.[0] ??
           'Arquivo inválido'
-        toast.message('⚠️ Arquivo inválido', {
+
+        toast.error('⚠️ Arquivo inválido', {
           description: errorMessage,
         })
+
         setIsLoading(false)
+
         return
       }
 
-      toast.message('⏳ Processando seu arquivo...', {
+      toast.message('📤 Upload iniciado...', {
         description: 'Isso pode levar alguns segundos...',
       })
 
+      // Upload the file to UploadThing
       const response = await startUpload([file])
 
       if (!response || response.length === 0) {
-        toast.message('⚠️ Falha no upload', {
+        toast.error('⚠️ Falha no upload', {
           description: 'Algo deu errado. Por favor, tente novamente.',
         })
         setIsLoading(false)
         return
       }
 
+      toast.message('⏳ Processando seu arquivo...', {
+        description: 'Nossa IA está lendo o seu arquivo ✨',
+      })
+
       const uploadedFile = response[0]
-      const uploadedFileUrl = uploadedFile.ufsUrl
+      const uploadedFileUrl = uploadedFile.serverData.file.url
 
       if (!uploadedFileUrl) {
-        toast.message('⚠️ URL do arquivo ausente', {
+        toast.warning('⚠️ URL do arquivo ausente', {
           description:
             'O upload foi bem-sucedido, mas a URL do arquivo não foi recebida.',
         })
@@ -108,41 +118,46 @@ export default function UploadForm() {
         return
       }
 
-      const summaryResult = await generatePDFSummary([
-        {
-          serverData: {
-            file: {
-              url: uploadedFileUrl,
-              name: uploadedFile.name || 'Uploaded PDF',
-            },
-          },
-        },
-      ])
+      let storeResult: any
+      const formattedFileName = formatFileNameAsTitle(file.name)
+      const result = await generatePdfText(uploadedFile.serverData.file.url)
 
-      if (summaryResult?.success && summaryResult.data) {
-        toast.message('📄 Resumo Pronto!', {
-          description: summaryResult.message,
+      toast.message('📑 Gerando Resumo...', {
+        description: 'A IA está gerando seu resumo agora 💡',
+      })
+
+      const summaryResult = await generatePdfSummary({
+        pdfText: result?.data?.pdfText ?? '',
+        fileName: formattedFileName,
+      })
+
+      const { data = null, message = null } = summaryResult || {}
+
+      if (data?.summary) {
+        toast.message('📥 Salvando resumo...', {
+          description: 'O resumo está sendo salvo no sistema 🗂️',
         })
 
-        const saveResult = await storePdfSummaryAction({
-          summary: summaryResult.data.summary,
-          title: summaryResult.data.title,
+        storeResult = await storePdfSummaryAction({
+          summary: data.summary,
+          title: formattedFileName,
           fileUrl: uploadedFileUrl,
           fileName: file.name,
         })
 
-        if (saveResult.success) {
-          toast.message('✅ Upload completo!', {
+        if (storeResult.success) {
+          toast.success('✅ Resumo Pronto!', {
             description: 'Redirecionando para o painel...',
           })
 
           formRef.current?.reset()
+
           setIsLoading(false)
-          router.push(`/summaries/${saveResult.id}`) // Redirect to dashboard after success
-          return
+
+          router.push(`/summaries/${storeResult.data!.id}`) // Redirect to dashboard after success
         } else {
           toast.message('❌ Falha ao salvar', {
-            description: saveResult.message,
+            description: storeResult.message,
           })
           setIsLoading(false)
         }
