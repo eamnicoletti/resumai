@@ -1,16 +1,19 @@
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+  <h1 style="font-weight: 800; font-size: 3rem; color: #111827;">
+    Resum<span style="color: #f43f5e;">ai</span>
+  </h1>
   <h2>⚡ Gere Insights Poderosos com seus PDFs</h2>
   <p><strong>Faça um resumo de PDFs em segundos</strong></p>
-  <p>Com o <strong>ResumAI</strong>, criar resumos nunca foi tão fácil.</p>
+  <p>Com o <strong>Resum<span style="color: #f43f5e;">ai</span></strong>, criar resumos nunca foi tão fácil.</p>
 </div>
 
 ## 🚀 Como funciona?
 
-O **ResumAI** é uma ferramenta que permite criar resumos em apenas 3 passos:
+O **Resum<span style="color: #f43f5e;">ai</span>** é uma ferramenta que permite criar resumos em apenas 3 passos:
 
 ### 1. Envie o seu PDF
 
-Apenas arraste e solte ou clique para enviar seu PDF para o Resumai.
+Apenas arraste e solte ou clique para enviar seu PDF.
 
 ### 2. Análise com IA
 
