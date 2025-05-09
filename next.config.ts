@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  pageExtensions: ['page.tsx', 'page.ts', 'route.ts'],
+  pageExtensions: ['tsx', 'ts'],
 }
 
 export default nextConfig
