@@ -27,8 +27,8 @@ export default function CTASection() {
             <div>
               <Button
                 variant={'link'}
-                size="xl"
-                className="w-full min-[400px]:w-auto mt-3 bg-linear-to-r
+                size="lg"
+                className="w-full min-[400px]:w-auto mt-3 h-14 bg-linear-to-r
                 from-slate-900 to-rose-500 hover:from-rose-500
                 hover:to-slate-900 hover:text-white text-white
                 transition-all duration-300 group hover:no-underline 

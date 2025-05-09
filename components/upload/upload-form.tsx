@@ -40,26 +40,15 @@ export default function UploadForm() {
   const router = useRouter()
   const schema = useFileValidationSchema() // Usando o hook para obter o schema
 
-  const { startUpload } = useUploadThing('pdfUploader', {
+  const { startUpload, routeConfig } = useUploadThing('pdfUploader', {
     onClientUploadComplete: () => {
-      toast.message('✅ Upload concluído!', {
-        description: 'Seu PDF foi enviado com sucesso.',
-      })
+      console.log('Upload completed')
     },
-    onUploadError: (err) => {
-      console.error('Error occurred while uploading', err)
-      toast.message('❌ Falha no upload!', {
-        description:
-          err.message || 'Ocorreu um erro inesperado durante o upload.',
-      })
+    onUploadError: (error: Error) => {
+      console.error(`Error uploading file! ${error.message}`)
     },
-    //@ts-ignore
-    onUploadBegin: ({ file }) => {
-      toast.message('📤 Upload iniciado', {
-        description: file?.name
-          ? `Enviando ${file.name}...`
-          : 'Iniciando upload...',
-      })
+    onUploadBegin: () => {
+      console.log('Uploading...')
     },
   })
 
@@ -92,9 +81,9 @@ export default function UploadForm() {
       })
 
       // Upload the file to UploadThing
-      const response = await startUpload([file])
+      const uploadResponse = await startUpload([file])
 
-      if (!response || response.length === 0) {
+      if (!uploadResponse || uploadResponse.length === 0) {
         toast.error('⚠️ Falha no upload', {
           description: 'Algo deu errado. Por favor, tente novamente.',
         })
@@ -106,8 +95,8 @@ export default function UploadForm() {
         description: 'Nossa IA está lendo o seu arquivo ✨',
       })
 
-      const uploadedFile = response[0]
-      const uploadedFileUrl = uploadedFile.serverData.file.url
+      const uploadedFile = uploadResponse[0]
+      const uploadedFileUrl = uploadedFile.serverData.fileUrl
 
       if (!uploadedFileUrl) {
         toast.warning('⚠️ URL do arquivo ausente', {
@@ -120,7 +109,7 @@ export default function UploadForm() {
 
       let storeResult: any
       const formattedFileName = formatFileNameAsTitle(file.name)
-      const result = await generatePdfText(uploadedFile.serverData.file.url)
+      const result = await generatePdfText(uploadedFileUrl)
 
       toast.message('📑 Gerando Resumo...', {
         description: 'A IA está gerando seu resumo agora 💡',
