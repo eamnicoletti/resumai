@@ -70,7 +70,7 @@ export default function HeroSection() {
             whileHover={buttonVariants}
             className="relative inline-block"
           >
-            <span className="relative z-10 px-2">insights</span>
+            <span className="relative z-10 px-2">insights 🚀</span>
             <span
               className="absolute inset-0 bg-rose-200/50 -rotate-2 
           rounded-2xl  transform -skew-y-1"

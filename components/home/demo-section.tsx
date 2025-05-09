@@ -8,7 +8,7 @@ const DEMO_SUMMARY = {
 
 # Visão Geral
 • 🎯 Curso abrangente Next.js 15, abrangendo desde fundamentos até estratégias avançadas de implantação.
-• 🚀 Domine o Next.js e crie aplicativos web incríveis. Perfeito para desenvolvedores de todos os níveis.
+• 📌 Domine o Next.js e crie aplicativos web incríveis. Perfeito para desenvolvedores de todos os níveis.
 
 
 # Detalhes do Documento
