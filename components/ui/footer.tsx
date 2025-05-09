@@ -44,7 +44,7 @@ export default function FooterSection() {
           {links.map((link, index) => (
             <Link
               key={index}
-              href={link.href}
+              href={link.href ?? ''}
               className="text-base text-muted-foreground hover:text-primary block duration-150"
             >
               <span>{link.title}</span>

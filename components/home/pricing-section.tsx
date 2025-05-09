@@ -45,7 +45,7 @@ const PrincingCard = ({
       <div
         className={cn(
           'relative flex flex-col h-full gap-4 lg:gap-8 z-10 p-8 border-[1px] border-gray-200 rounded-2xl',
-          id === 'pro' && 'border-rose-500 gap-5 border-2'
+          id === 'pro' && 'border-rose-500 gap-5 border-2',
         )}
       >
         <MotionDiv
@@ -80,12 +80,12 @@ const PrincingCard = ({
           className="space-y-2 flex justify-center w-full"
         >
           <Link
-            href={paymentLink}
+            href={paymentLink ?? ''}
             className={cn(
               'w-full rounded-full flex items-center justify-center gap-2 bg-linear-to-r from-rose-800 to-rose-500 hover:from-rose-500 hover:to-rose-800 text-white border-2 py-2',
               id === 'pro'
                 ? 'border-rose-900'
-                : 'border-rose-100 from-rose-400 to-rose-500'
+                : 'border-rose-100 from-rose-400 to-rose-500',
             )}
           >
             Selecionar Plano <ArrowRight size={18} />
