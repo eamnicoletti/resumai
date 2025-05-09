@@ -20,7 +20,7 @@ Nosso sistema de inteligência artificial irá analisar seu PDF e criar um resum
 
 Receba um resumo claro, objetivo e direto ao ponto com base no seu conteúdo.
 
-### 🛠️ Tecnologias Principais:
+## 🛠️ Tecnologias Principais:
 
 - 🚀 Next.js 15 App Router para renderização server-side, roteamento e endpoints de API com Componentes de Servidor
 - ❄️ React para construção de interfaces de usuário interativas com componentes reutilizáveis
@@ -63,7 +63,7 @@ Para rodar esse projeto:
    - Stripe payment setup
    - NeonDB database connection
 
-## Como fazer o Fork e o Clone
+## 🔨 Como fazer o Fork e o Clone
 
 1. Clique no botão "Fork" no topo superior direito do repositório e e crie sua própria cópia
 2. Clone o seu fork para sua máquina local usando o comando `git clone`
