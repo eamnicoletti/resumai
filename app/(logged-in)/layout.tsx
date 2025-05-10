@@ -14,8 +14,8 @@ export default async function Layout({
     redirect('/sign-in')
   }
 
-  const hasActiveSubscription = hasActivePlan(
-    user.emailAddresses[0].emailAddress
+  const hasActiveSubscription = await hasActivePlan(
+    user.emailAddresses[0].emailAddress,
   )
 
   if (!hasActiveSubscription) {
