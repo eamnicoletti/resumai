@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: 'Resumai - Resumo de PDFs com tecnologia de IA',
   description:
     'Salve horas de tempo de leitura. Transforme PDFs extensos em resumos claros e estruturados em segundos com nossa tecnologia de IA poderosa.',
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     images: [
       {

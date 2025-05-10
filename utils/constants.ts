@@ -18,8 +18,8 @@ export const pricingPlans = [
     name: 'Básico',
     price: 9,
     description: 'Perfeito para uso ocasional',
-    paymentLink: isDev ? 'https://buy.stripe.com/test_dR67t7aTvaiyc2AaEE' : '',
-    priceId: isDev ? 'price_1RM8RPQczykkG8iR9Gzhd3Jm' : '',
+    paymentLink: isDev ? 'https://buy.stripe.com/test_28E7sN1Dcaxp80c3IGbEA01' : 'https://buy.stripe.com/5kAdRR4Yd47DerKaEE',
+    priceId: isDev ? 'price_1RN1TAQC4A0qfDVtYsitAytm' : 'price_1RN0n2GLdnGOYP0p6ibzTot1',
     items: [
       '5 resumos por mês',
       'Velocidade de processamento regular',
@@ -31,8 +31,8 @@ export const pricingPlans = [
     name: 'Pro',
     price: 19,
     description: 'Para profissionais e times',
-    paymentLink: isDev ? 'https://buy.stripe.com/test_aEU7t7bXz9eu2s0eUV' : '',
-    priceId: isDev ? 'price_1RM8SPQczykkG8iR3bILDc8T' : '',
+    paymentLink: isDev ? 'https://buy.stripe.com/test_7sY6oJ0z8gVNbco3IGbEA00' : 'https://buy.stripe.com/aEU3ddeyN7jP0AUeUV',
+    priceId: isDev ? 'price_1RN1TAQC4A0qfDVt6s92ya6y' : 'price_1RN0n2GLdnGOYP0pKEFqr7uM',
     items: [
       'Resumos ilimitados',
       'Processamento prioritário',
